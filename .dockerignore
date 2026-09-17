@@ -1,0 +1,17 @@
+.git
+.git/**
+.venv/
+**/node_modules/
+**/.pnpm-store/
+**/.npm-cache/
+**/.npm/
+**/content/data/
+**/content/logs/
+**/content/files/
+**/content/media/
+**/content/images/
+**/config.development*.json
+**/config.local.json
+*.db
+*.db.*
+*.log

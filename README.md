@@ -162,3 +162,24 @@ edgardo-law/
 - **Node version error** habang `ghost install local`** — i-check ulit kung
   Node v22 talaga ang installed (`node -v`). Kung mali, i-download ang
   tamang version sa nodejs.org.
+
+## Render deployment
+
+The repository includes an isolated Docker deployment for Render. It does not
+change the local Ghost setup or the development SQLite database.
+
+### Before deploying
+
+- Create a managed **MySQL 8** database. Ghost production does not use Render
+   PostgreSQL as its application database.
+- Create a Render Web Service from this repository and choose Docker.
+- Use the included `render.yaml` as the service blueprint, or copy its
+   environment variables into the Render dashboard.
+- Set `url` to the final public HTTPS URL of the Render service.
+- Add the MySQL host, port, database name, username, and password as secret
+   environment variables.
+- Add SMTP credentials if the site will send staff or member emails.
+
+The Render service uses a persistent disk for Ghost content and seeds it from
+the repository on first boot. The local `config.development.json`, SQLite
+database, backups, logs, and `node_modules` are not used by this deployment.

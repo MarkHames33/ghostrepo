@@ -1,0 +1,43 @@
+services:
+  - type: web
+    name: edgardo-law-ghost
+    runtime: docker
+    plan: starter
+    healthCheckPath: /
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: server__host
+        value: 0.0.0.0
+      - key: server__port
+        value: 10000
+      - key: paths__contentPath
+        value: /app/content
+      - key: database__client
+        value: mysql
+      - key: url
+        sync: false
+      - key: database__connection__host
+        sync: false
+      - key: database__connection__port
+        value: 3306
+      - key: database__connection__user
+        sync: false
+      - key: database__connection__password
+        sync: false
+      - key: database__connection__database
+        sync: false
+      - key: mail__transport
+        value: SMTP
+      - key: mail__options__host
+        sync: false
+      - key: mail__options__port
+        value: 587
+      - key: mail__options__auth__user
+        sync: false
+      - key: mail__options__auth__pass
+        sync: false
+    disk:
+      name: edgardo-law-content
+      mountPath: /app/content
+      sizeGB: 1
