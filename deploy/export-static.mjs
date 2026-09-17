@@ -13,7 +13,8 @@ const routes = [
   '/information/',
   '/faq/',
   '/contact/',
-  '/privacy/'
+  '/privacy/',
+  '/blog/what-to-bring-to-your-first-legal-consultation/'
 ];
 
 const downloaded = new Set();

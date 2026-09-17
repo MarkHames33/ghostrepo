@@ -9,7 +9,7 @@
       <img class="page-feature-image" src="{{img_url feature_image size="m"}}" alt="{{title}}">
     {{/if}}
     <div class="page-content">
-      {{content}}
+      {{#if html}}{{{html}}}{{else}}{{content}}{{/if}}
     </div>
   </div>
 </article>
