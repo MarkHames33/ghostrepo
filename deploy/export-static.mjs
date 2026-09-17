@@ -39,8 +39,21 @@ for (const route of routes) {
   html = html.replaceAll(`${origin}/`, '/');
   html = html.replaceAll('http://localhost:2368', '');
 
-  const references = [...html.matchAll(/(?:src|href)="(\/[^"#]+)"/g)].map((match) => match[1]);
+  const references = [
+    ...[...html.matchAll(/(?:src|href)="(\/[^"#]+)"/g)].map((match) => match[1]),
+    ...[...html.matchAll(/url\(['"]?(\/[^)'"#]+)['"]?\)/g)].map((match) => match[1])
+  ];
   for (const reference of references) await saveAsset(reference);
+
+  const cssReferences = [...html.matchAll(/href="(\/assets\/css\/[^"#]+)"/g)].map((match) => match[1]);
+  for (const cssReference of cssReferences) {
+    const cssResponse = await fetch(new URL(cssReference, origin));
+    if (!cssResponse.ok) throw new Error(`${cssResponse.status} ${cssReference}`);
+    const css = await cssResponse.text();
+    const backgroundAssets = [...css.matchAll(/url\(\s*['"]?\.\.\/images\/([^'"#]+\.(?:png|jpe?g|webp|gif))['"]?\s*\)/gi)]
+      .map((match) => `/assets/images/${match[1]}`);
+    for (const asset of backgroundAssets) await saveAsset(asset);
+  }
 
   const destination = route === '/'
     ? join(output, 'index.html')
