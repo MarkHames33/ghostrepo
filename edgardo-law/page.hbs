@@ -1,0 +1,15 @@
+{{!< default}}
+
+{{#post}}
+  <section class="page-section">
+    <div class="container container-narrow">
+      <h1 class="page-title">{{title}}</h1>
+      {{#if feature_image}}
+        <img class="page-feature-image" src="{{img_url feature_image size="m"}}" alt="{{title}}">
+      {{/if}}
+      <div class="page-content">
+        {{{content}}}
+      </div>
+    </div>
+  </section>
+{{/post}}

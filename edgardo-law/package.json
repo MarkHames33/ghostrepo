@@ -1,0 +1,52 @@
+{
+  "name": "edgardo-law",
+  "description": "A custom theme for Atty. Thriza Czarina Quinto Garcia, J.D. Law Office and Notary Public, built for Ghost.",
+  "version": "1.0.0",
+  "engines": {
+    "ghost-api": "v5.0"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Atty. Thriza Czarina Quinto Garcia, J.D."
+  },
+  "config": {
+    "posts_per_page": 8,
+    "image_sizes": {
+      "xs": { "width": 300 },
+      "s": { "width": 600 },
+      "m": { "width": 1000 },
+      "l": { "width": 1600 },
+      "xl": { "width": 2000 }
+    },
+    "custom": {
+      "office_address": {
+        "type": "text",
+        "default": "Poblacion, Puerto Galera, Oriental Mindoro, 5203. Beside Imperial Appliance Plaza - Puerto Galera."
+      },
+      "office_phone": {
+        "type": "text",
+        "default": "0929 899 2195"
+      },
+      "office_hours": {
+        "type": "text",
+        "default": "Open everyday: 8:00 AM - 5:00 PM"
+      },
+      "office_email": {
+        "type": "text",
+        "default": "garcialaw.legal@gmail.com"
+      },
+      "facebook_url": {
+        "type": "text",
+        "default": "https://www.facebook.com/profile.php?id=61569212622292"
+      },
+      "messenger_url": {
+        "type": "text",
+        "default": "https://m.me/61569212622292"
+      },
+      "hero_headline": {
+        "type": "text",
+        "default": "GARCIA LAW FIRM"
+      }
+    }
+  }
+}

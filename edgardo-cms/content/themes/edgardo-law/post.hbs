@@ -1,0 +1,16 @@
+{{!< default}}
+
+<article class="post-article">
+  <div class="container container-narrow">
+    <p class="post-back"><a href="{{@site.url}}">&larr; Back to homepage</a></p>
+    <div class="article-meta post-meta"><time datetime="{{date format="YYYY-MM-DD"}}">{{date format="MMMM D, YYYY"}}</time>{{#primary_author}}<span>By {{name}}</span>{{else}}<span>By Garcia Law Office</span>{{/primary_author}}</div>
+    <h1 class="page-title">{{title}}</h1>
+    {{#if custom_excerpt}}<p class="post-lede">{{custom_excerpt}}</p>{{/if}}
+    {{#if feature_image}}
+      <img class="page-feature-image" src="{{img_url feature_image size="m"}}" alt="{{title}}">
+    {{/if}}
+    <div class="page-content">
+      {{#if html}}{{{html}}}{{else}}{{content}}{{/if}}
+    </div>
+  </div>
+</article>

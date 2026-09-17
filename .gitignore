@@ -1,0 +1,37 @@
+# Dependencies and package caches
+**/node_modules/
+**/.pnpm-store/
+**/.npm-cache/
+**/.npm/
+
+# Local runtime data
+**/content/data/*.db
+**/content/data/*.db-*
+**/content/data/*.db.*
+**/content/logs/
+**/content/files/
+**/content/media/
+**/content/images/*
+!**/content/images/README.md
+
+# Local configuration and secrets
+**/config.production.json
+**/config.development*.json
+**/config.local.json
+.env
+.env.*
+!.env.example
+
+# Generated Ghost files
+**/content/adapters/
+**/content/public/
+**/content/themes/*/assets/built/
+**/content/themes/*/assets/dist/
+
+# Local development files
+.venv/
+.ghost-cli
+.ghostpid
+*.log
+.DS_Store
+Thumbs.db

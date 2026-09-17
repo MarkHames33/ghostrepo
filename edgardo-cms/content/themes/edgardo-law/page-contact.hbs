@@ -1,0 +1,146 @@
+{{!< default}}
+
+<section class="info-hero">
+  <div class="container container-narrow">
+    <div class="page-identity">
+      <img class="page-identity-mark" src="{{asset "images/download (25).jpg"}}" alt="Garcia Law Office and Notary Public seal logo">
+      <div>
+        <p class="eyebrow">Contact and appointments</p>
+          <h1 class="page-title">Let’s talk about what matters.</h1>
+      </div>
+    </div>
+    <p class="info-lede">Share a short summary of your concern and we will help you identify the appropriate next step. Initial consultations are handled with discretion and care.</p>
+  </div>
+</section>
+
+<section class="contact-details section-border">
+  <div class="container contact-details-grid">
+    <div class="contact-detail-block">
+      <p class="eyebrow">Visit the office</p>
+      <h2>In-person appointments</h2>
+      <p>{{@custom.office_address}}</p>
+      <a class="text-link" href="https://www.google.com/maps/search/?api=1&amp;query=Poblacion%2C%20Puerto%20Galera%2C%20Oriental%20Mindoro%2C%205203" target="_blank" rel="noopener">Get directions</a>
+      <p class="detail-note">Appointments are recommended so we can set aside enough time for your concern.</p>
+    </div>
+    <div class="contact-detail-block">
+      <p class="eyebrow">Call the office</p>
+      <h2><a class="contact-phone" href="tel:+639298992195">{{@custom.office_phone}}</a></h2>
+      <p>{{@custom.office_hours}}</p>
+      <p class="detail-note">Please leave your name, contact number, and a brief reason for your call.</p>
+    </div>
+  </div>
+</section>
+
+<section class="appointment-request section-border">
+  <div class="container appointment-request-grid">
+    <div>
+      <p class="eyebrow">Online appointment request</p>
+      <h2>Tell the office how we can help.</h2>
+      <p>Complete the form with your concern and preferred schedule. Your request will be prepared for Messenger.</p>
+      <p class="appointment-privacy"><strong>Privacy note:</strong> Use the form only for initial coordination. Do not include passwords, complete financial details, or unnecessary sensitive information.</p>
+    </div>
+    <div class="appointment-form">
+      <form id="appointmentForm" data-office-messenger="https://www.facebook.com/messages/t/61569212622292">
+        <div class="form-field-row form-field-split">
+          <div class="form-field-row">
+            <label for="appointment-name">Full name <span aria-hidden="true">*</span></label>
+            <input id="appointment-name" name="name" type="text" autocomplete="name" required>
+          </div>
+          <div class="form-field-row">
+            <label for="appointment-phone">Phone number <span aria-hidden="true">*</span></label>
+            <input id="appointment-phone" name="phone" type="tel" autocomplete="tel" required>
+          </div>
+        </div>
+        <div class="form-field-row">
+          <label for="appointment-email">Email address <span aria-hidden="true">*</span></label>
+          <input id="appointment-email" name="email" type="email" autocomplete="email" required>
+        </div>
+        <div class="form-field-row">
+          <label for="appointment-concern">What do you need help with? <span aria-hidden="true">*</span></label>
+          <select id="appointment-concern" name="concern" required>
+            <option value="" selected disabled>Select a concern type</option>
+            <option value="Family law">Family law</option>
+            <option value="Civil or property matter">Civil or property matter</option>
+            <option value="Criminal matter">Criminal matter</option>
+            <option value="Notarial service">Notarial service</option>
+            <option value="Business or contract matter">Business or contract matter</option>
+            <option value="Other concern">Other concern</option>
+          </select>
+        </div>
+        <div class="form-field-row form-field-split">
+          <div class="form-field-row">
+            <label for="appointment-date">Preferred date</label>
+            <input id="appointment-date" name="date" type="date">
+          </div>
+          <div class="form-field-row">
+            <label for="appointment-time">Preferred time</label>
+            <input id="appointment-time" name="time" type="time">
+          </div>
+        </div>
+        <div class="form-field-row">
+          <label for="appointment-mode">Preferred consultation mode <span aria-hidden="true">*</span></label>
+          <select id="appointment-mode" name="mode" required>
+            <option value="In-person at the office">In-person at the office</option>
+            <option value="Phone call">Phone call</option>
+            <option value="Online consultation">Online consultation</option>
+          </select>
+        </div>
+        <div class="form-field-row">
+          <label for="appointment-message">Brief description of your concern <span aria-hidden="true">*</span></label>
+          <textarea id="appointment-message" name="message" rows="5" placeholder="Tell us what happened, the people involved, and any important deadline." required></textarea>
+        </div>
+        <div class="form-notices" aria-label="Appointment notices">
+          <p><strong>Initial request only.</strong> Sending this form does not confirm an appointment or create an attorney-client relationship.</p>
+          <p><strong>Keep it brief.</strong> Do not include passwords, account details, or unnecessary sensitive information.</p>
+          <p><strong>Confirmation.</strong> The office will reply through Messenger to discuss availability and next steps.</p>
+        </div>
+        <div class="form-field-row form-consent">
+          <label><input name="consent" type="checkbox" required> I understand this is an appointment request only and the office will confirm availability separately.</label>
+        </div>
+        <button class="form-submit" type="submit">Prepare message for Messenger</button>
+        <p id="appointmentStatus" class="form-status" role="status" aria-live="polite"></p>
+        <div id="messagePreviewWrap" class="message-preview-wrap" hidden>
+          <label for="messagePreview">Message to send in Messenger</label>
+          <textarea id="messagePreview" rows="10" readonly></textarea>
+          <p class="message-preview-note">The message is selected for copying. Press <strong>Ctrl+C</strong>, open Messenger, then press <strong>Ctrl+V</strong> and send.</p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="contact-social" data-office-email="{{@custom.office_email}}" data-facebook-url="{{@custom.facebook_url}}" data-messenger-url="{{@custom.messenger_url}}">
+  <div class="container">
+    <p class="eyebrow">Reach us online</p>
+    <h2>Choose the channel that works for you.</h2>
+    <div class="social-links">
+      <a class="social-link" href="{{@custom.facebook_url}}" target="_blank" rel="noopener">
+        <span class="social-icon" aria-hidden="true">f</span>
+        <span><strong>Facebook page</strong><small>Follow office updates and announcements.</small></span>
+        <span class="social-arrow" aria-hidden="true">&#8594;</span>
+      </a>
+      <a class="social-link" href="https://www.facebook.com/messages/t/61569212622292" target="_blank" rel="noopener">
+        <span class="social-icon" aria-hidden="true">&#9679;</span>
+        <span><strong>Messenger</strong><small>Message Garcia Law Office directly.</small></span>
+        <span class="social-arrow" aria-hidden="true">&#8594;</span>
+      </a>
+      <a class="social-link" href="mailto:{{@custom.office_email}}">
+        <span class="social-icon" aria-hidden="true">&#9993;</span>
+        <span><strong>Email</strong><small>{{@custom.office_email}}</small></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="contact-steps">
+  <div class="container container-narrow">
+    <p class="eyebrow">Before your appointment</p>
+    <h2>Make the first conversation useful.</h2>
+    <ol class="steps-list">
+      <li><strong>Describe the concern.</strong><span class="step-copy">Include what happened, who is involved, and what outcome you need.</span></li>
+      <li><strong>Bring relevant records.</strong><span class="step-copy">Contracts, notices, IDs, receipts, titles, messages, or other documents may help.</span></li>
+      <li><strong>Share important dates.</strong><span class="step-copy">Deadlines, hearings, payments, and recent events can affect your options.</span></li>
+    </ol>
+    <p class="contact-disclaimer">Information shared online is for initial coordination only and does not create an attorney-client relationship until formally accepted by the office.</p>
+  </div>
+</section>

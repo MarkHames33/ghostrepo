@@ -1,0 +1,15 @@
+{{!< default}}
+
+<article class="post-article">
+  <div class="container container-narrow">
+    <p class="post-back"><a href="{{@site.url}}">&larr; Back to homepage</a></p>
+    <h1 class="page-title">{{title}}</h1>
+    {{#if custom_excerpt}}<p class="post-lede">{{custom_excerpt}}</p>{{/if}}
+    {{#if feature_image}}
+      <img class="page-feature-image" src="{{img_url feature_image size="m"}}" alt="{{title}}">
+    {{/if}}
+    <div class="page-content">
+      {{content}}
+    </div>
+  </div>
+</article>

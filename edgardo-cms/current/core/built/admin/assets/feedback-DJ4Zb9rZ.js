@@ -1,0 +1,1 @@
+import{i as e}from"./hooks-Cy_-oZ4o.js";var t=`FeedbackResponseType`,n=e({dataType:t,path:e=>`/feedback/${e}/`});export{n,t};

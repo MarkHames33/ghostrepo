@@ -1,0 +1,20 @@
+routes:
+  /laws/: page-laws
+  /about/: page-about
+  /lawyers/: page-about
+  /gallery/: page-gallery
+  /faq/: page-faq
+  /blog/what-to-bring-to-your-first-legal-consultation/: page-article-consultation
+  /privacy/: page-privacy
+
+collections:
+  /blog/:
+    permalink: /blog/{slug}/
+    template: blog
+  /:
+    permalink: /{slug}/
+    template: index
+
+taxonomies:
+  tag: /tag/{slug}/
+  author: /author/{slug}/

@@ -1,0 +1,1 @@
+import{r as e}from"./hooks-Cy_-oZ4o.js";var t=e({dataType:`ReferrerHistoryResponseType`,path:`/stats/referrers/`}),n=e({dataType:`TopSourcesGrowthResponseType`,path:`/stats/top-sources-growth`});export{n,t};
