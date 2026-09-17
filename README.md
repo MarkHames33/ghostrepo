@@ -183,3 +183,11 @@ change the local Ghost setup or the development SQLite database.
 The Render service uses a persistent disk for Ghost content and seeds it from
 the repository on first boot. The local `config.development.json`, SQLite
 database, backups, logs, and `node_modules` are not used by this deployment.
+
+## Static hosting
+
+The `static-site/` directory is an exported, tested snapshot of the public
+pages. It can be deployed to Netlify, Cloudflare Pages, or GitHub Pages. For
+Netlify, connect this repository and set the publish directory to
+`static-site/`; `netlify.toml` already contains that setting. Static hosting
+does not include the Ghost Admin or live CMS editing.
