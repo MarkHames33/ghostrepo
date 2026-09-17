@@ -42,7 +42,9 @@ for (const route of routes) {
   const references = [...html.matchAll(/(?:src|href)="(\/[^"#]+)"/g)].map((match) => match[1]);
   for (const reference of references) await saveAsset(reference);
 
-  const destination = join(output, route === '/' ? 'index.html' : route.slice(1), 'index.html');
+  const destination = route === '/'
+    ? join(output, 'index.html')
+    : join(output, route.slice(1), 'index.html');
   await mkdir(dirname(destination), {recursive: true});
   await writeFile(destination, html);
   console.log(`Exported ${route}`);
