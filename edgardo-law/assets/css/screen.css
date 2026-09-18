@@ -605,10 +605,16 @@ body { background: var(--paper); color: var(--text); }
 .gala-chat { position: fixed; right: 1.25rem; bottom: 1.25rem; z-index: 50; font-family: var(--sans); }
 .gala-launcher { display: inline-flex; align-items: center; gap: 0.55rem; min-height: 3.25rem; padding: 0.55rem 1rem 0.55rem 0.6rem; border: 1px solid var(--gold, var(--brass)); border-radius: 999px; background: var(--burgundy, var(--coral)); color: #fffaf0; box-shadow: 0 0.8rem 2rem rgba(23, 37, 54, 0.22); cursor: pointer; font: inherit; font-weight: 700; }
 .gala-launcher:hover { background: var(--ink); }
-.gala-launcher-mark { display: grid; width: 2.1rem; height: 2.1rem; place-items: center; border: 1px solid rgba(255, 250, 240, 0.7); border-radius: 50%; color: #fffaf0; font-family: var(--serif); font-size: 1.15rem; }
+.gala-launcher-mark, .gala-brand-mark { display: grid; place-items: center; flex: 0 0 auto; border: 1px solid rgba(255, 250, 240, 0.7); border-radius: 50%; color: #fffaf0; font-family: var(--serif); line-height: 0.8; }
+.gala-launcher-mark { width: 2.1rem; height: 2.1rem; }
+.gala-launcher-mark b, .gala-brand-mark b { font-size: 1.15rem; }
+.gala-launcher-mark small, .gala-brand-mark small { margin-top: 0.12rem; font-family: var(--sans); font-size: 0.4rem; font-weight: 800; letter-spacing: 0.12em; }
 .gala-panel { display: grid; grid-template-rows: auto auto minmax(12rem, 1fr) auto auto auto; width: min(24rem, calc(100vw - 2rem)); max-height: min(36rem, calc(100vh - 6rem)); margin-bottom: 0.75rem; overflow: hidden; border: 1px solid var(--rule); border-radius: 0.5rem; background: var(--canvas, var(--paper)); box-shadow: 0 1.25rem 3rem rgba(23, 37, 54, 0.25); }
 .gala-panel[hidden] { display: none; }
-.gala-panel-header { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1rem 0.85rem; background: var(--rail, var(--ink)); color: #fffaf0; }
+.gala-panel-header { display: flex; align-items: center; justify-content: space-between; padding: 1rem; background: var(--rail, var(--ink)); color: #fffaf0; }
+.gala-brand { display: flex; align-items: center; gap: 0.65rem; }
+.gala-brand-mark { width: 2.35rem; height: 2.35rem; border-color: rgba(215, 179, 107, 0.8); background: rgba(255, 250, 240, 0.08); }
+.gala-brand > span:last-child { display: block; }
 .gala-panel-header strong, .gala-panel-header small { display: block; }
 .gala-panel-header strong { font-family: var(--serif); font-size: 1.25rem; letter-spacing: 0.06em; }
 .gala-panel-header small { color: #dfd1b7; font-size: 0.72rem; }
