@@ -848,14 +848,16 @@ body, main, .site-footer { background-color: var(--canvas); }
 .appointment-request-grid > div > p:not(.eyebrow), .appointment-privacy { max-width: 44ch; color: var(--text-soft); }
 .appointment-privacy { margin-top: 1.5rem; padding: 1rem 1.1rem; border-left: 4px solid var(--gold); background: rgba(255, 252, 247, 0.65); font-size: 0.9rem; line-height: 1.65; }
 .appointment-request-grid > * { min-width: 0; }
-.appointment-form { display: grid; width: 100%; min-width: 0; gap: 1rem; padding: clamp(1.25rem, 3vw, 2rem); border: 1px solid rgba(170, 128, 64, 0.3); border-radius: 0.7rem; background: rgba(255, 252, 247, 0.96); box-shadow: 0 0.7rem 1.6rem rgba(74, 18, 32, 0.08); }
+.appointment-form { position: relative; display: grid; width: 100%; min-width: 0; gap: 1rem; padding: clamp(2.2rem, 4vw, 3rem) clamp(1.25rem, 4vw, 2.6rem) clamp(1.5rem, 3vw, 2.2rem); border: 1px solid #d7c79e; border-radius: 0.2rem; background-color: #fffdf5; background-image: linear-gradient(90deg, transparent 0, transparent 2.6rem, rgba(176, 54, 54, 0.24) 2.6rem, rgba(176, 54, 54, 0.24) 2.68rem, transparent 2.68rem), repeating-linear-gradient(0deg, transparent 0, transparent 1.65rem, rgba(98, 142, 170, 0.18) 1.65rem, rgba(98, 142, 170, 0.18) 1.7rem); box-shadow: 0.35rem 0.45rem 0 rgba(170, 128, 64, 0.16), 0 1rem 2rem rgba(74, 18, 32, 0.12); }
+.appointment-form::before { content: "CONSULTATION NOTES"; position: absolute; top: 0.8rem; right: 1.2rem; color: rgba(111, 83, 24, 0.68); font-family: var(--sans); font-size: 0.62rem; font-weight: 800; letter-spacing: 0.16em; }
+.appointment-form::after { content: ""; position: absolute; top: 0.75rem; left: 0.75rem; width: 0.55rem; height: 0.55rem; border-radius: 50%; background: var(--burgundy); box-shadow: 0 1.2rem 0 var(--burgundy), 0 2.4rem 0 var(--burgundy); opacity: 0.58; }
 .appointment-form form { display: grid; gap: 1rem; min-width: 0; }
 .google-form-embed { padding: 0.5rem; overflow: hidden; }
 .google-form-embed iframe { display: block; width: 100%; min-height: 950px; border: 0; }
 .form-field-row { display: grid; gap: 0.4rem; }
 .form-field-row label { color: var(--ink); font-size: 0.82rem; font-weight: 700; }
 .form-field-row label span { color: var(--burgundy); }
-.form-field-row input, .form-field-row select, .form-field-row textarea { width: 100%; border: 1px solid var(--rule); border-radius: 0.35rem; padding: 0.75rem 0.8rem; background: #fffdf9; color: var(--ink); font: inherit; }
+.form-field-row input, .form-field-row select, .form-field-row textarea { width: 100%; border: 1px solid rgba(128, 147, 159, 0.5); border-radius: 0.12rem; padding: 0.75rem 0.8rem; background: rgba(255, 255, 252, 0.82); color: var(--ink); font: inherit; }
 .form-field-row textarea { resize: vertical; min-height: 8rem; }
 .form-field-row input:focus, .form-field-row select:focus, .form-field-row textarea:focus { outline: 2px solid rgba(170, 128, 64, 0.45); outline-offset: 2px; }
 .form-field-split { grid-template-columns: 1fr 1fr; gap: 1rem; }
