@@ -4,6 +4,7 @@ routes:
   /lawyers/: page-about
   /gallery/: page-gallery
   /faq/: page-faq
+  /login/: page-login
   /blog/what-to-bring-to-your-first-legal-consultation/: page-article-consultation
   /privacy/: page-privacy
 

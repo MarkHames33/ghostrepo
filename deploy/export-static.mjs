@@ -13,6 +13,7 @@ const routes = [
   '/information/',
   '/faq/',
   '/contact/',
+  '/login/',
   '/privacy/',
   '/blog/what-to-bring-to-your-first-legal-consultation/'
 ];
