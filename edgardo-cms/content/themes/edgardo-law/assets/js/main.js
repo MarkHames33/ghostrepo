@@ -203,7 +203,7 @@ document.addEventListener('DOMContentLoaded', function () {
     submitButton.disabled = true;
     status.textContent = 'Saving your email...';
     try {
-      var response = await fetch('/', {
+      var response = await fetch('/.netlify/functions/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: new URLSearchParams(new FormData(form)).toString()
