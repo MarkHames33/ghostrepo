@@ -64,6 +64,23 @@
 {{{body}}}
 </main>
 
+<aside class="visitor-email-prompt" id="visitorEmailPrompt" aria-labelledby="visitorEmailTitle" hidden>
+  <button class="visitor-email-close" id="visitorEmailClose" type="button" aria-label="Close email updates prompt">&times;</button>
+  <p class="eyebrow">Stay informed</p>
+  <h2 id="visitorEmailTitle">Receive occasional office updates</h2>
+  <p>Leave your email for legal guides and office announcements. No spam, and you can unsubscribe anytime.</p>
+  <form class="visitor-email-form" name="visitor-updates" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+    <input type="hidden" name="form-name" value="visitor-updates">
+    <p class="visitor-email-honeypot" aria-hidden="true"><label>Do not fill this out: <input name="bot-field" tabindex="-1"></label></p>
+    <label class="sr-only" for="visitorEmail">Email address</label>
+    <div class="visitor-email-row">
+      <input id="visitorEmail" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+      <button class="btn btn-primary" type="submit">Subscribe</button>
+    </div>
+    <p class="visitor-email-status" id="visitorEmailStatus" role="status" aria-live="polite"></p>
+  </form>
+</aside>
+
 <footer class="site-footer">
   <div class="container">
     <span class="wordmark wordmark-lockup">

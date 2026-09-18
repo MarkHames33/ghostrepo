@@ -460,6 +460,17 @@ section { padding: clamp(3rem, 7vw, 5rem) 0; }
 }
 .site-footer .container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
 .site-footer .wordmark { color: var(--text-on-ink); }
+.visitor-email-prompt { position: fixed; right: 1.25rem; bottom: 1.25rem; z-index: 40; width: min(25rem, calc(100vw - 2rem)); padding: 1.5rem; border: 1px solid var(--brass); border-radius: 4px; background: var(--paper); box-shadow: 0 1rem 3rem rgba(27, 36, 48, 0.24); }
+.visitor-email-prompt[hidden] { display: none; }
+.visitor-email-prompt h2 { max-width: 16ch; font-size: 1.5rem; }
+.visitor-email-prompt > p:not(.eyebrow) { color: var(--text-soft); font-size: 0.9rem; }
+.visitor-email-close { position: absolute; top: 0.5rem; right: 0.6rem; border: 0; background: transparent; color: var(--text-soft); font-size: 1.5rem; line-height: 1; cursor: pointer; }
+.visitor-email-row { display: flex; gap: 0.5rem; }
+.visitor-email-row input { min-width: 0; flex: 1; border: 1px solid var(--rule); padding: 0.72rem; background: #fffdf9; color: var(--text); font: inherit; }
+.visitor-email-row .btn { padding: 0.72rem 0.9rem; white-space: nowrap; }
+.visitor-email-status { min-height: 1.3em; margin: 0.5rem 0 0; color: var(--text-soft); font-size: 0.78rem; }
+.visitor-email-honeypot { position: absolute; left: -9999px; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 
 /* ---------------- Page / Post templates ---------------- */
 
@@ -595,46 +606,6 @@ body { background: var(--paper); color: var(--text); }
 .attorney-credentials ul { margin: 0; padding-left: 1.35rem; color: var(--text-soft); font-size: 0.98rem; line-height: 1.65; }
 .attorney-credentials li { padding-left: 0.25rem; }
 @media (max-width: 860px) { .attorney-profile { grid-template-columns: 1fr; } .attorney-profile-seal, .attorney-profile-photo { width: min(68vw, 260px); } .attorney-profile-copy { font-size: 1rem; line-height: 1.75; } }
-
-/* GALA: a private, local first-step assistant that does not alter page workflows. */
-.gala-chat { position: fixed; right: 1.25rem; bottom: 1.25rem; z-index: 50; font-family: var(--sans); }
-.gala-launcher { display: grid; place-items: center; width: 5rem; min-height: 5.4rem; padding: 0; border: 0; background: transparent; color: #fffaf0; cursor: pointer; font: inherit; }
-.gala-launcher:hover { background: var(--ink); }
-.gala-launcher-avatar { position: relative; display: grid; place-items: center; width: 4.35rem; height: 5.15rem; padding-bottom: 0.8rem; animation: gala-float 3.8s ease-in-out infinite; }
-.gala-launcher-avatar::before { content: ""; position: absolute; inset: 0.15rem; border-radius: 50%; background: #d7b36b; box-shadow: 0 0 0 0.3rem rgba(215, 179, 107, 0.18), 0 0.4rem 1rem rgba(0, 0, 0, 0.28); }
-.gala-launcher-avatar img { position: relative; width: 4rem; height: 4rem; border: 2px solid #fff8e9; border-radius: 50%; object-fit: cover; }
-.gala-launcher-label { position: absolute; right: 50%; bottom: 0; z-index: 1; padding: 0.18rem 0.5rem; border: 1px solid #d7b36b; border-radius: 999px; background: var(--rail, var(--ink)); color: #fff8e9; font-size: 0.58rem; font-weight: 800; letter-spacing: 0.14em; line-height: 1; transform: translateX(50%); }
-@keyframes gala-float { 0%, 100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-0.35rem) rotate(2deg); } }
-.gala-launcher-mark { width: 2.1rem; height: 2.1rem; }
-.gala-launcher-mark b, .gala-brand-mark b { font-size: 1.15rem; }
-.gala-launcher-mark small, .gala-brand-mark small { margin-top: 0.12rem; font-family: var(--sans); font-size: 0.4rem; font-weight: 800; letter-spacing: 0.12em; }
-.gala-panel { display: grid; grid-template-rows: auto auto minmax(12rem, 1fr) auto auto auto; width: min(24rem, calc(100vw - 2rem)); max-height: min(36rem, calc(100vh - 6rem)); margin-bottom: 0.75rem; overflow: hidden; border: 1px solid var(--rule); border-radius: 0.5rem; background: var(--canvas, var(--paper)); box-shadow: 0 1.25rem 3rem rgba(23, 37, 54, 0.25); }
-.gala-panel[hidden] { display: none; }
-.gala-panel-header { display: flex; align-items: center; justify-content: space-between; padding: 1rem; background: var(--rail, var(--ink)); color: #fffaf0; }
-.gala-brand { display: flex; align-items: center; gap: 0.65rem; }
-.gala-brand-mark { display: grid; place-items: center; width: 2.35rem; height: 2.35rem; overflow: hidden; border: 2px solid rgba(215, 179, 107, 0.8); border-radius: 50%; background: rgba(255, 250, 240, 0.08); box-shadow: 0 0 0 0.25rem rgba(215, 179, 107, 0.1); }
-.gala-brand-mark img { width: 100%; height: 100%; object-fit: cover; }
-.gala-brand > span:last-child { display: block; }
-.gala-panel-header strong, .gala-panel-header small { display: block; }
-.gala-panel-header strong { font-family: var(--serif); font-size: 1.25rem; letter-spacing: 0.06em; }
-.gala-panel-header small { color: #dfd1b7; font-size: 0.72rem; }
-.gala-close { width: 2rem; height: 2rem; border: 0; background: transparent; color: #fffaf0; cursor: pointer; font-size: 1.5rem; line-height: 1; }
-.gala-disclaimer { padding: 0.65rem 1rem; border-bottom: 1px solid var(--rule); background: rgba(167, 122, 50, 0.12); color: var(--text-soft); font-size: 0.72rem; line-height: 1.35; }
-.gala-messages { display: flex; flex-direction: column; gap: 0.6rem; min-height: 12rem; max-height: 22rem; margin: 0; padding: 1rem; overflow-y: auto; list-style: none; }
-.gala-message { max-width: 90%; margin: 0; padding: 0.65rem 0.75rem; border-radius: 0.55rem; font-size: 0.82rem; line-height: 1.45; }
-.gala-message-bot { align-self: flex-start; border: 1px solid var(--rule); background: rgba(255, 253, 248, 0.82); color: var(--text); }
-.gala-message-user { align-self: flex-end; background: var(--rail, var(--ink)); color: #fffaf0; }
-.gala-quick-actions { display: flex; flex-wrap: wrap; gap: 0.4rem; padding: 0 1rem 0.75rem; }
-.gala-quick-actions button { padding: 0.35rem 0.55rem; border: 1px solid var(--gold, var(--brass)); border-radius: 999px; background: transparent; color: var(--ink); cursor: pointer; font: inherit; font-size: 0.7rem; }
-.gala-quick-actions button:hover { background: var(--gold, var(--brass)); color: #fffaf0; }
-.gala-form { display: flex; gap: 0.45rem; padding: 0.75rem 1rem; border-top: 1px solid var(--rule); }
-.gala-form input { min-width: 0; flex: 1; padding: 0.6rem 0.7rem; border: 1px solid var(--rule); border-radius: 0.25rem; background: #fffdf8; color: var(--text); font: inherit; font-size: 0.8rem; }
-.gala-form button { padding: 0.55rem 0.7rem; border: 0; border-radius: 0.25rem; background: var(--burgundy, var(--coral)); color: #fffaf0; cursor: pointer; font: inherit; font-size: 0.78rem; font-weight: 700; }
-.gala-contact-link { display: block; padding: 0 1rem 0.9rem; color: var(--burgundy, var(--coral)); font-size: 0.75rem; font-weight: 700; text-align: right; }
-.gala-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
-.gala-launcher:focus-visible, .gala-close:focus-visible, .gala-quick-actions button:focus-visible, .gala-form input:focus-visible, .gala-form button:focus-visible, .gala-contact-link:focus-visible { outline: 2px solid var(--gold, var(--brass)); outline-offset: 4px; }
-@media (max-width: 520px) { .gala-chat { right: 1rem; bottom: 1rem; } .gala-panel { width: min(24rem, calc(100vw - 2rem)); max-height: calc(100vh - 5.5rem); } }
-@media (prefers-reduced-motion: reduce) { .gala-launcher-avatar { animation: none; } }
 
 /* Keep supporting text and navigation readable across the theme. */
 :root {

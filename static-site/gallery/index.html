@@ -93,7 +93,7 @@
     <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=WwnU9jw5ancNC8Gc">
     <script defer src="/public/comment-counts.min.js?v=oFYkaGLdiMqB8VN9" data-ghost-comments-counts-api="/members/api/comments/counts/"></script>
     <script defer src="/public/member-attribution.min.js?v=AKG4hWena9j3yX3I"></script><style>:root {--ghost-accent-color: #FF1A75;}</style>
-  <link rel="stylesheet" href="/assets/css/screen.css?v=LVSuVuPepvSAfbbr">
+  <link rel="stylesheet" href="/assets/css/screen.css?v=_DxU4l9IPZ7Nfk4P">
 </head>
 <body class="">
 
@@ -223,6 +223,23 @@
 
 </main>
 
+<aside class="visitor-email-prompt" id="visitorEmailPrompt" aria-labelledby="visitorEmailTitle" hidden>
+  <button class="visitor-email-close" id="visitorEmailClose" type="button" aria-label="Close email updates prompt">&times;</button>
+  <p class="eyebrow">Stay informed</p>
+  <h2 id="visitorEmailTitle">Receive occasional office updates</h2>
+  <p>Leave your email for legal guides and office announcements. No spam, and you can unsubscribe anytime.</p>
+  <form class="visitor-email-form" name="visitor-updates" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+    <input type="hidden" name="form-name" value="visitor-updates">
+    <p class="visitor-email-honeypot" aria-hidden="true"><label>Do not fill this out: <input name="bot-field" tabindex="-1"></label></p>
+    <label class="sr-only" for="visitorEmail">Email address</label>
+    <div class="visitor-email-row">
+      <input id="visitorEmail" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+      <button class="btn btn-primary" type="submit">Subscribe</button>
+    </div>
+    <p class="visitor-email-status" id="visitorEmailStatus" role="status" aria-live="polite"></p>
+  </form>
+</aside>
+
 <footer class="site-footer">
   <div class="container">
     <span class="wordmark wordmark-lockup">
@@ -234,7 +251,7 @@
   </div>
 </footer>
 
-<script src="/assets/js/main.js?v=FxxoayZ3JoUHQ2x4"></script>
+<script src="/assets/js/main.js?v=Y6MpcqOr8t6r0Wo7"></script>
 
 </body>
 </html>

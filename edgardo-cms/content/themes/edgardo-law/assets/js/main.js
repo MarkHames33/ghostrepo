@@ -69,3 +69,42 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+  var prompt = document.getElementById('visitorEmailPrompt');
+  var closeButton = document.getElementById('visitorEmailClose');
+  var form = prompt && prompt.querySelector('.visitor-email-form');
+  var status = document.getElementById('visitorEmailStatus');
+  if (!prompt || !closeButton || !form) return;
+
+  function rememberChoice() {
+    window.localStorage.setItem('visitorEmailPromptDone', 'true');
+  }
+
+  if (window.localStorage.getItem('visitorEmailPromptDone') === 'true') return;
+  window.setTimeout(function () { prompt.hidden = false; }, 20000);
+  closeButton.addEventListener('click', function () {
+    rememberChoice();
+    prompt.hidden = true;
+  });
+  form.addEventListener('submit', async function (event) {
+    event.preventDefault();
+    var submitButton = form.querySelector('[type="submit"]');
+    submitButton.disabled = true;
+    status.textContent = 'Saving your email...';
+    try {
+      var response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(form)).toString()
+      });
+      if (!response.ok) throw new Error('Subscription failed');
+      rememberChoice();
+      status.textContent = 'Thank you. You are on the updates list.';
+      window.setTimeout(function () { prompt.hidden = true; }, 1800);
+    } catch (error) {
+      status.textContent = 'Unable to save right now. Please try again later.';
+      submitButton.disabled = false;
+    }
+  });
+});
