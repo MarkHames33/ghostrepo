@@ -484,6 +484,15 @@ section { padding: clamp(3rem, 7vw, 5rem) 0; }
 .client-login-form .btn { margin-top: 0.8rem; }
 .login-status { min-height: 1.5em; margin: 0.4rem 0 0; color: var(--text-soft); font-size: 0.85rem; }
 .login-status.is-error { color: var(--coral); }
+.private-client-section { min-height: 60vh; }
+.private-client-panel { max-width: 54rem; margin: 0 auto; }
+.private-client-section:not(.is-authenticated) .private-client-panel > *:not(.login-status) { visibility: hidden; }
+.private-client-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 2rem; }
+.private-client-grid article { padding: 1.4rem; border: 1px solid var(--rule); background: rgba(247, 240, 223, 0.9); }
+.private-client-grid h2 { font-size: 1.35rem; }
+.private-client-grid p { color: var(--text-soft); }
+.private-client-label { color: var(--coral); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+.private-client-panel .login-status { margin-top: 1.5rem; }
 .post-lede { color: var(--brass); font-size: 1.05rem; margin-bottom: 1rem; }
 .post-back a { color: var(--text-soft); text-decoration: none; font-size: 0.9rem; }
 .post-back a:hover { color: var(--ink); }

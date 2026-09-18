@@ -5,6 +5,7 @@ routes:
   /gallery/: page-gallery
   /faq/: page-faq
   /login/: page-login
+  /client/: page-client
   /blog/what-to-bring-to-your-first-legal-consultation/: page-article-consultation
   /privacy/: page-privacy
 

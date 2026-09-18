@@ -1,9 +1,10 @@
 document.addEventListener('DOMContentLoaded', async function () {
   var form = document.getElementById('clientLoginForm');
-  if (!form || !window.supabase) return;
+  var privateClient = document.querySelector('[data-private-client]');
+  if ((!form && !privateClient) || !window.supabase) return;
 
-  var status = document.getElementById('loginStatus');
-  var submit = form.querySelector('[type="submit"]');
+  var status = document.getElementById(form ? 'loginStatus' : 'privateClientStatus');
+  var submit = form ? form.querySelector('[type="submit"]') : null;
   var supabaseClient;
 
   function setStatus(message, isError) {
@@ -18,14 +19,20 @@ document.addEventListener('DOMContentLoaded', async function () {
     supabaseClient = window.supabase.createClient(config.supabaseUrl, config.supabaseAnonKey);
 
     var sessionResult = await supabaseClient.auth.getSession();
-    if (sessionResult.data.session) {
-      window.location.href = '/';
+    if (privateClient && !sessionResult.data.session) {
+      window.location.href = '/login/?returnTo=' + encodeURIComponent(window.location.pathname);
       return;
+    }
+    if (privateClient) {
+      privateClient.classList.add('is-authenticated');
+      setStatus('Signed in securely.');
     }
   } catch (error) {
     setStatus('Login is not configured yet. Please contact the office.', true);
     return;
   }
+
+  if (!form) return;
 
   form.addEventListener('submit', async function (event) {
     event.preventDefault();
@@ -41,7 +48,8 @@ document.addEventListener('DOMContentLoaded', async function () {
       submit.disabled = false;
       return;
     }
-    window.location.href = '/';
+    var returnTo = new URLSearchParams(window.location.search).get('returnTo');
+    window.location.href = returnTo && returnTo.startsWith('/') ? returnTo : '/client/';
   });
 
   document.querySelectorAll('[data-auth-provider]').forEach(function (button) {

@@ -14,6 +14,7 @@ const routes = [
   '/faq/',
   '/contact/',
   '/login/',
+  '/client/',
   '/privacy/',
   '/blog/what-to-bring-to-your-first-legal-consultation/'
 ];
