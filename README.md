@@ -172,6 +172,10 @@ It does not require an OpenAI API key, payment method, or API credits. It answer
 common questions about services, consultations, documents, notarial services, and
 office location, then directs case-specific or unknown questions to the Contact page.
 
+Appointment requests are sent through FormSubmit to `markjamesbelen5@gmail.com`.
+FormSubmit may send a one-time activation email after the first submission; approve
+that email before using the appointment form in production.
+
 The repository includes an isolated Docker deployment for Render. It does not
 change the local Ghost setup or the development SQLite database.
 

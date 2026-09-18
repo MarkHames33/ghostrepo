@@ -30,21 +30,43 @@ document.addEventListener('DOMContentLoaded', function () {
     ].join('\n');
   }
 
-  form.addEventListener('submit', function (event) {
+  form.addEventListener('submit', async function (event) {
     event.preventDefault();
     var data = new FormData(form);
     var body = buildRequestBody(data);
     var status = document.getElementById('appointmentStatus');
     var messengerUrl = form.getAttribute('data-office-messenger');
+    var officeEmail = form.getAttribute('data-office-email');
+    var submitButton = form.querySelector('.form-submit');
     var previewWrap = document.getElementById('messagePreviewWrap');
     var preview = document.getElementById('messagePreview');
     preview.value = body;
     previewWrap.hidden = false;
-    preview.focus();
-    preview.select();
-    status.textContent = 'Your message is ready. Press Ctrl+C, then paste it into Messenger.';
-    window.open(messengerUrl, '_blank', 'noopener');
-    if (navigator.clipboard) navigator.clipboard.writeText(body).catch(function () {});
+    status.textContent = 'Sending your appointment request by email...';
+    submitButton.disabled = true;
+    try {
+      var emailData = new FormData();
+      emailData.append('name', data.get('name'));
+      emailData.append('email', data.get('email'));
+      emailData.append('phone', data.get('phone') || 'Not provided');
+      emailData.append('concern', data.get('concern'));
+      emailData.append('date', data.get('date') || 'Not specified');
+      emailData.append('time', data.get('time') || 'Not specified');
+      emailData.append('mode', data.get('mode'));
+      emailData.append('message', data.get('message'));
+      emailData.append('_subject', 'New appointment request - Garcia Law Office');
+      emailData.append('_captcha', 'false');
+      emailData.append('_template', 'table');
+      var response = await fetch('https://formsubmit.co/ajax/' + encodeURIComponent(officeEmail), { method: 'POST', body: emailData, headers: { Accept: 'application/json' } });
+      if (!response.ok) throw new Error('Email delivery failed');
+      status.textContent = 'Your appointment request was sent by email. The office will reply to confirm availability.';
+    } catch (error) {
+      status.textContent = 'Email delivery is unavailable. Your message is ready for Messenger.';
+      window.open(messengerUrl, '_blank', 'noopener');
+      if (navigator.clipboard) navigator.clipboard.writeText(body).catch(function () {});
+    } finally {
+      submitButton.disabled = false;
+    }
   });
 });
 

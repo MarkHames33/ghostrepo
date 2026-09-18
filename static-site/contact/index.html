@@ -195,7 +195,7 @@
       <p class="appointment-privacy"><strong>Privacy note:</strong> Use the form only for initial coordination. Do not include passwords, complete financial details, or unnecessary sensitive information.</p>
     </div>
     <div class="appointment-form">
-      <form id="appointmentForm" data-office-messenger="https://www.facebook.com/messages/t/61569212622292">
+      <form id="appointmentForm" data-office-email="markjamesbelen5@gmail.com" data-office-messenger="https://www.facebook.com/messages/t/61569212622292">
         <div class="form-field-row form-field-split">
           <div class="form-field-row">
             <label for="appointment-name">Full name <span aria-hidden="true">*</span></label>
@@ -247,17 +247,17 @@
         <div class="form-notices" aria-label="Appointment notices">
           <p><strong>Initial request only.</strong> Sending this form does not confirm an appointment or create an attorney-client relationship.</p>
           <p><strong>Keep it brief.</strong> Do not include passwords, account details, or unnecessary sensitive information.</p>
-          <p><strong>Confirmation.</strong> The office will reply through Messenger to discuss availability and next steps.</p>
+          <p><strong>Confirmation.</strong> The office will receive this request by email and reply to discuss availability and next steps.</p>
         </div>
         <div class="form-field-row form-consent">
           <label><input name="consent" type="checkbox" required> I understand this is an appointment request only and the office will confirm availability separately.</label>
         </div>
-        <button class="form-submit" type="submit">Prepare message for Messenger</button>
+        <button class="form-submit" type="submit">Send appointment request by email</button>
         <p id="appointmentStatus" class="form-status" role="status" aria-live="polite"></p>
         <div id="messagePreviewWrap" class="message-preview-wrap" hidden>
-          <label for="messagePreview">Message to send in Messenger</label>
+          <label for="messagePreview">Appointment request preview</label>
           <textarea id="messagePreview" rows="10" readonly></textarea>
-          <p class="message-preview-note">The message is selected for copying. Press <strong>Ctrl+C</strong>, open Messenger, then press <strong>Ctrl+V</strong> and send.</p>
+          <p class="message-preview-note">Your request is emailed to the office. Messenger opens only if email delivery is unavailable.</p>
         </div>
       </form>
     </div>
