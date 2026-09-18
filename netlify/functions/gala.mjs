@@ -1,27 +1,5 @@
 const allowedOrigin = process.env.URL || '*';
 
-const systemPrompt = `You are GALA, the Garcia Law Office Legal Assistant in the Philippines.
-Your job is to answer customer questions helpfully and clearly. Detect the language of each
-customer message and reply in that same language: English questions get an English answer,
-Filipino or Tagalog questions get a Filipino/Tagalog answer, and Taglish questions get a natural
-Taglish answer. Do not switch languages unless the customer asks you to. You can explain the office's services,
-consultation process, appointment preparation, documents to bring, general legal concepts,
-notarial-service basics, office information, navigation of the website, and common customer FAQs.
-
-Verified office context: Garcia Law Office and Notary Public is in Poblacion, Puerto Galera,
-Oriental Mindoro, 5203, beside Imperial Appliance Plaza. Customers can use the website's
-Services, Legal Guides, FAQ, Information, and Contact pages for the current office details.
-Do not invent fees, office hours, lawyer availability, case results, phone numbers, legal deadlines,
-or services that are not confirmed. When a detail is unknown or may have changed, say so and direct
-the customer to the Contact page for confirmation.
-
-You provide general educational information only, not legal advice. Never claim to be a lawyer,
-predict case outcomes, create an attorney-client relationship, or request passwords, bank details,
-full government ID numbers, or unnecessary sensitive personal information. Do not ask customers to
-upload confidential documents in this chat. For emergencies or immediate danger, advise contacting
-local emergency services first. For case-specific advice, tell the customer to arrange a consultation
-with a qualified lawyer. Keep answers concise, practical, and easy for a customer to understand.`;
-
 function json(body, status = 200) {
   return new Response(JSON.stringify(body), {
     status,
@@ -34,11 +12,25 @@ function json(body, status = 200) {
   });
 }
 
+function answerQuestion(question) {
+  const input = question.toLowerCase();
+  const filipino = /\b(ano|paano|saan|magkano|may|mga|kailangan|pwede|puwede|kayo|ako|ko|dapat|gusto|tulong|tanong)\b/.test(input);
+  const taglish = filipino && /\b(consultation|appointment|documents|services|legal|office|schedule|property|family|criminal|notarial)\b/.test(input);
+  const contact = taglish ? 'Para sa confirmed details o case-specific advice, pumunta sa Contact page.' : filipino ? 'Para sa kumpirmadong detalye o payo tungkol sa iyong partikular na kaso, pumunta sa Contact page.' : 'For confirmed details or case-specific advice, please use the Contact page.';
+
+  if (/service|practice|tulong|help|family|property|civil|criminal|notar/.test(input)) return taglish ? 'Garcia Law Office may assist with family law, civil or property matters, criminal matters, and notarial services. ' + contact : filipino ? 'Maaaring tumulong ang Garcia Law Office sa family law, civil o property matters, criminal matters, at notarial services. ' + contact : 'Garcia Law Office may assist with family law, civil or property matters, criminal matters, and notarial services. ' + contact;
+  if (/document|requirements|requirement|bring|dala|dalhin|kailangan/.test(input)) return taglish ? 'For your consultation, magdala ng valid government ID at documents na directly related sa concern mo. Itago ang originals at magdala ng copies kung maaari. Huwag magpadala ng passwords o unnecessary sensitive information sa chat.' : filipino ? 'Magdala ng valid government ID at mga dokumentong direktang may kinalaman sa concern mo. Itago ang originals at magdala ng kopya kung maaari. Huwag magpadala ng password o hindi kailangang sensitibong impormasyon sa chat.' : 'For a consultation, bring a valid government ID and documents directly related to your concern. Keep the originals and bring copies when possible. Do not send passwords or unnecessary sensitive information in chat.';
+  if (/consult|appointment|schedule|book|meet|pakita|pumunta|iskedyul/.test(input)) return taglish ? 'You can request an initial consultation through the Contact page. Share a short summary of your concern, preferred schedule, and contact details. An appointment request does not create an attorney-client relationship.' : filipino ? 'Maaari kang humingi ng initial consultation sa Contact page. Ibahagi ang maikling buod ng concern, preferred schedule, at contact details. Ang appointment request ay hindi agad lumilikha ng attorney-client relationship.' : 'You can request an initial consultation through the Contact page. Share a short summary of your concern, preferred schedule, and contact details. An appointment request does not create an attorney-client relationship.';
+  if (/where|location|address|saan|lokasyon|nasaan/.test(input)) return filipino ? 'Ang Garcia Law Office and Notary Public ay nasa Poblacion, Puerto Galera, Oriental Mindoro, 5203, beside Imperial Appliance Plaza. Gamitin ang Contact page para sa directions at updated office details.' : 'Garcia Law Office and Notary Public is in Poblacion, Puerto Galera, Oriental Mindoro, 5203, beside Imperial Appliance Plaza. Use the Contact page for directions and updated office details.';
+  if (/urgent|emergency|danger|arrest|agarang|panganib/.test(input)) return filipino ? 'Kung may agarang panganib o krimen na nangyayari, tumawag muna sa local emergency services. Para sa legal concern, makipag-ugnayan sa office para matukoy ang susunod na hakbang.' : 'If there is immediate danger or a crime is happening now, contact local emergency services first. For a legal concern, contact the office to discuss the next step.';
+  if (/fee|fees|cost|price|magkano|bayad|presyo/.test(input)) return filipino ? 'Hindi ko makumpirma ang kasalukuyang consultation o service fees. Makipag-ugnayan sa office sa Contact page para sa updated rates.' : 'I cannot confirm current consultation or service fees. Please use the Contact page to ask the office for updated rates.';
+  if (/advice|legal opinion|case outcome|result|payo|kaso|mananalo/.test(input)) return filipino ? 'Makakapagbigay lamang ako ng general educational information, hindi legal advice o prediction ng resulta. Para sa partikular na kaso, magpa-consult sa qualified lawyer.' : 'I can provide general educational information, not legal advice or predictions about a case outcome. Please consult a qualified lawyer for your specific situation.';
+  return filipino ? 'Makakatulong ako sa general FAQs tungkol sa services, consultation, documents, notarial services, at office location. Para sa ibang tanong, gamitin ang Contact page para makausap ang office.' : 'I can help with general FAQs about services, consultations, documents, notarial services, and the office location. For other questions, use the Contact page to reach the office.';
+}
+
 export default async function handler(request) {
   if (request.method === 'OPTIONS') return json({ ok: true });
   if (request.method !== 'POST') return json({ error: 'Method not allowed' }, 405);
-  if (!process.env.OPENAI_API_KEY) return json({ error: 'GALA is not configured yet' }, 503);
-
   let body;
   try {
     body = await request.json();
@@ -49,30 +41,5 @@ export default async function handler(request) {
   const question = typeof body.question === 'string' ? body.question.trim() : '';
   if (!question || question.length > 240) return json({ error: 'Question must be 1-240 characters' }, 400);
 
-  try {
-    const response = await fetch('https://api.openai.com/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        model: process.env.OPENAI_MODEL || 'gpt-4o-mini',
-        temperature: 0.2,
-        max_tokens: 300,
-        messages: [
-          { role: 'system', content: systemPrompt },
-          { role: 'user', content: question }
-        ]
-      })
-    });
-
-    if (!response.ok) return json({ error: 'Unable to reach GALA' }, 502);
-    const data = await response.json();
-    const answer = data.choices?.[0]?.message?.content?.trim();
-    if (!answer) return json({ error: 'GALA returned no answer' }, 502);
-    return json({ answer });
-  } catch {
-    return json({ error: 'GALA is temporarily unavailable' }, 502);
-  }
+  return json({ answer: answerQuestion(question) });
 }
