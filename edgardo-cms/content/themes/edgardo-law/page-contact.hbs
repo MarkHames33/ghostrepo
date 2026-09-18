@@ -40,6 +40,15 @@
       <p class="appointment-privacy"><strong>Privacy note:</strong> Use the form only for initial coordination. Do not include passwords, complete financial details, or unnecessary sensitive information.</p>
     </div>
     <div class="appointment-form">
+      <div class="consultation-checklist" id="consultationChecklist" aria-labelledby="checklistTitle">
+        <p class="eyebrow" data-language="checklistEyebrow">Before you send</p>
+        <h3 id="checklistTitle" data-language="checklistTitle">Consultation checklist</h3>
+        <p data-language="checklistCopy">Choose what applies so you know what to prepare.</p>
+        <label><input type="checkbox" data-checklist="id"> <span data-language="checkId">Valid government ID</span></label>
+        <label><input type="checkbox" data-checklist="records"> <span data-language="checkRecords">Relevant contracts, notices, or receipts</span></label>
+        <label><input type="checkbox" data-checklist="timeline"> <span data-language="checkTimeline">A short timeline of important dates</span></label>
+        <p class="checklist-result" id="checklistResult" role="status" aria-live="polite" data-language="checklistResult">0 of 3 items checked</p>
+      </div>
       <form id="appointmentForm" data-office-email="markjamesbelen5@gmail.com" data-office-messenger="https://www.facebook.com/messages/t/61569212622292">
         <div class="form-field-row form-field-split">
           <div class="form-field-row">
