@@ -165,6 +165,14 @@ edgardo-law/
 
 ## Render deployment
 
+## GALA AI assistant on Netlify
+
+GALA sends typed questions to the secure `netlify/functions/gala.mjs` function.
+Before deploying, add `OPENAI_API_KEY` in Netlify → Site configuration → Environment
+variables. Optionally add `OPENAI_MODEL` (default: `gpt-4o-mini`). Never put the API
+key in the static site files or browser code. If the key is not configured, GALA
+falls back to its local general-information responses.
+
 The repository includes an isolated Docker deployment for Render. It does not
 change the local Ghost setup or the development SQLite database.
 
