@@ -1,36 +1,10 @@
 document.addEventListener('DOMContentLoaded', function () {
   var toggle = document.getElementById('navToggle');
   var nav = document.getElementById('mainNav');
-  if (toggle && nav) toggle.addEventListener('click', function () { nav.classList.toggle('open'); });
-
-  var languageToggle = document.getElementById('languageToggle');
-  var language = window.localStorage.getItem('siteLanguage') || 'en';
-  var translations = {
-    fil: { home: 'Home', services: 'Serbisyo', lawyers: 'Mga Abogado', gallery: 'Gallery', guides: 'Mga Gabay sa Batas', blog: 'Blog', information: 'Impormasyon', faq: 'FAQ', contact: 'Makipag-ugnayan', updatesEyebrow: 'Manatiling may alam', updatesTitle: 'Tumanggap ng paminsang update', updatesCopy: 'Ilagay ang email para sa legal guides at announcement ng opisina. Walang spam at puwedeng mag-unsubscribe.', subscribe: 'Mag-subscribe', checklistEyebrow: 'Bago ipadala', checklistTitle: 'Checklist para sa konsultasyon', checklistCopy: 'Piliin ang naaangkop para malaman ang dapat ihanda.', checkId: 'Valid na government ID', checkRecords: 'Mga kaugnay na kontrata, notice, o resibo', checkTimeline: 'Maikling timeline ng mahahalagang petsa' },
-    en: { home: 'Home', services: 'Services', lawyers: 'Lawyers', gallery: 'Gallery', guides: 'Legal Guides', blog: 'Blog', information: 'Information', faq: 'FAQ', contact: 'Contact', updatesEyebrow: 'Stay informed', updatesTitle: 'Receive occasional office updates', updatesCopy: 'Leave your email for legal guides and office announcements. No spam, and you can unsubscribe anytime.', subscribe: 'Subscribe', checklistEyebrow: 'Before you send', checklistTitle: 'Consultation checklist', checklistCopy: 'Choose what applies so you know what to prepare.', checkId: 'Valid government ID', checkRecords: 'Relevant contracts, notices, or receipts', checkTimeline: 'A short timeline of important dates' }
-  };
-  function applyLanguage() {
-    document.querySelectorAll('[data-language]').forEach(function (element) {
-      var key = element.getAttribute('data-language');
-      if (translations[language][key]) element.textContent = translations[language][key];
-    });
-    if (languageToggle) { languageToggle.textContent = language === 'en' ? 'FIL' : 'EN'; languageToggle.setAttribute('aria-pressed', language === 'fil' ? 'true' : 'false'); }
-  }
-  if (languageToggle) languageToggle.addEventListener('click', function () { language = language === 'en' ? 'fil' : 'en'; window.localStorage.setItem('siteLanguage', language); applyLanguage(); });
-  applyLanguage();
-});
-
-document.addEventListener('DOMContentLoaded', function () {
-  var checklist = document.getElementById('consultationChecklist');
-  var result = document.getElementById('checklistResult');
-  if (!checklist || !result) return;
-  function updateChecklist() {
-    var checked = checklist.querySelectorAll('input[type="checkbox"]:checked').length;
-    var language = window.localStorage.getItem('siteLanguage') || 'en';
-    result.textContent = language === 'fil' ? checked + ' sa 3 ang napili' : checked + ' of 3 items checked';
-  }
-  checklist.querySelectorAll('input[type="checkbox"]').forEach(function (input) { input.addEventListener('change', updateChecklist); });
-  updateChecklist();
+  if (!toggle || !nav) return;
+  toggle.addEventListener('click', function () {
+    nav.classList.toggle('open');
+  });
 });
 
 document.addEventListener('DOMContentLoaded', function () {

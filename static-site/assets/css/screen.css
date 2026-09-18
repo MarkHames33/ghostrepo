@@ -209,8 +209,6 @@ img { max-width: 100%; display: block; }
 .brand-tagline { color: var(--gold, var(--brass)); font-family: var(--serif); font-size: 0.68rem; font-style: italic; font-weight: 500; letter-spacing: 0.03em; line-height: 1.15; }
 .brand-mark { width: 2.7rem; height: 2.7rem; flex: 0 0 auto; border-radius: 50%; object-fit: cover; }
 .site-header .brand-mark { display: block !important; visibility: visible !important; opacity: 1 !important; position: relative; z-index: 2; }
-.language-toggle { margin-left: 0.75rem; border: 1px solid var(--brass); border-radius: 999px; padding: 0.35rem 0.55rem; background: transparent; color: var(--ink); cursor: pointer; font: inherit; font-size: 0.7rem; font-weight: 800; }
-.language-toggle:hover, .language-toggle[aria-pressed="true"] { background: var(--brass); color: #fffaf0; }
 .main-nav { display: flex; gap: 2rem; }
 .main-nav .nav a {
   text-decoration: none;
@@ -473,12 +471,6 @@ section { padding: clamp(3rem, 7vw, 5rem) 0; }
 .visitor-email-status { min-height: 1.3em; margin: 0.5rem 0 0; color: var(--text-soft); font-size: 0.78rem; }
 .visitor-email-honeypot { position: absolute; left: -9999px; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
-.consultation-checklist { margin-bottom: 1.4rem; padding: 1rem; border: 1px solid var(--rule); border-radius: 0.45rem; background: rgba(170, 128, 64, 0.08); }
-.consultation-checklist h3 { margin-bottom: 0.25rem; font-size: 1.35rem; }
-.consultation-checklist > p:not(.eyebrow), .consultation-checklist label { color: var(--text-soft); font-size: 0.86rem; }
-.consultation-checklist label { display: flex; gap: 0.55rem; align-items: flex-start; margin-top: 0.6rem; cursor: pointer; }
-.consultation-checklist input { margin-top: 0.25rem; accent-color: var(--coral); }
-.checklist-result { margin: 0.8rem 0 0; color: var(--coral); font-size: 0.78rem; font-weight: 700; }
 
 .gala-chat { position: fixed; right: 1.25rem; bottom: 1.25rem; z-index: 50; font-family: var(--sans); }
 .gala-launcher { display: grid; place-items: center; width: 5rem; min-height: 5.4rem; padding: 0; border: 0; background: transparent; color: #fffaf0; cursor: pointer; font: inherit; }

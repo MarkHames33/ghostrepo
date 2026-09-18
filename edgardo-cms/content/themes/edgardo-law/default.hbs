@@ -44,18 +44,17 @@
       </span>
     </a>
     <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">&#9776;</button>
-    <button class="language-toggle" id="languageToggle" type="button" aria-label="Switch language" aria-pressed="false">FIL</button>
     <nav class="main-nav" id="mainNav">
       <ul class="nav nav-page-links">
-        <li><a href="{{@site.url}}/" data-language="home"><span class="nav-icon" aria-hidden="true">&#9672;</span>Home</a></li>
-        <li><a href="{{@site.url}}/services/" data-language="services"><span class="nav-icon" aria-hidden="true">&#9878;</span>Services</a></li>
-        <li><a href="{{@site.url}}/lawyers/" data-language="lawyers"><span class="nav-icon" aria-hidden="true">&#9673;</span>Lawyers</a></li>
-        <li><a href="{{@site.url}}/gallery/" data-language="gallery"><span class="nav-icon" aria-hidden="true">&#9638;</span>Gallery</a></li>
-        <li><a href="{{@site.url}}/laws/" data-language="guides"><span class="nav-icon" aria-hidden="true">&#167;</span>Legal Guides</a></li>
-        <li><a href="{{@site.url}}/blog/" data-language="blog"><span class="nav-icon" aria-hidden="true">&#9998;</span>Blog</a></li>
-        <li><a href="{{@site.url}}/information/" data-language="information"><span class="nav-icon" aria-hidden="true">&#10022;</span>Information</a></li>
-        <li><a href="{{@site.url}}/faq/" data-language="faq"><span class="nav-icon" aria-hidden="true">&#63;</span>FAQ</a></li>
-        <li><a href="{{@site.url}}/contact/" data-language="contact"><span class="nav-icon" aria-hidden="true">&#9993;</span>Contact</a></li>
+        <li><a href="{{@site.url}}/"><span class="nav-icon" aria-hidden="true">&#9672;</span>Home</a></li>
+        <li><a href="{{@site.url}}/services/"><span class="nav-icon" aria-hidden="true">&#9878;</span>Services</a></li>
+        <li><a href="{{@site.url}}/lawyers/"><span class="nav-icon" aria-hidden="true">&#9673;</span>Lawyers</a></li>
+        <li><a href="{{@site.url}}/gallery/"><span class="nav-icon" aria-hidden="true">&#9638;</span>Gallery</a></li>
+        <li><a href="{{@site.url}}/laws/"><span class="nav-icon" aria-hidden="true">&#167;</span>Legal Guides</a></li>
+        <li><a href="{{@site.url}}/blog/"><span class="nav-icon" aria-hidden="true">&#9998;</span>Blog</a></li>
+        <li><a href="{{@site.url}}/information/"><span class="nav-icon" aria-hidden="true">&#10022;</span>Information</a></li>
+        <li><a href="{{@site.url}}/faq/"><span class="nav-icon" aria-hidden="true">&#63;</span>FAQ</a></li>
+        <li><a href="{{@site.url}}/contact/"><span class="nav-icon" aria-hidden="true">&#9993;</span>Contact</a></li>
       </ul>
     </nav>
   </div>
@@ -67,16 +66,16 @@
 
 <aside class="visitor-email-prompt" id="visitorEmailPrompt" aria-labelledby="visitorEmailTitle" hidden>
   <button class="visitor-email-close" id="visitorEmailClose" type="button" aria-label="Close email updates prompt">&times;</button>
-  <p class="eyebrow" data-language="updatesEyebrow">Stay informed</p>
-  <h2 id="visitorEmailTitle" data-language="updatesTitle">Receive occasional office updates</h2>
-  <p data-language="updatesCopy">Leave your email for legal guides and office announcements. No spam, and you can unsubscribe anytime.</p>
+  <p class="eyebrow">Stay informed</p>
+  <h2 id="visitorEmailTitle">Receive occasional office updates</h2>
+  <p>Leave your email for legal guides and office announcements. No spam, and you can unsubscribe anytime.</p>
   <form class="visitor-email-form" name="visitor-updates" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
     <input type="hidden" name="form-name" value="visitor-updates">
     <p class="visitor-email-honeypot" aria-hidden="true"><label>Do not fill this out: <input name="bot-field" tabindex="-1"></label></p>
     <label class="sr-only" for="visitorEmail">Email address</label>
     <div class="visitor-email-row">
       <input id="visitorEmail" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
-      <button class="btn btn-primary" type="submit" data-language="subscribe">Subscribe</button>
+      <button class="btn btn-primary" type="submit">Subscribe</button>
     </div>
     <p class="visitor-email-status" id="visitorEmailStatus" role="status" aria-live="polite"></p>
   </form>
